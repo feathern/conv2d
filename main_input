@@ -1,0 +1,9 @@
+&input_namelist
+output_interval = 50
+dt = .01
+density_init_type = 1
+max_time = 13.0
+max_iteration = 2000
+wave_num = 2.0
+nx = 128
+/
