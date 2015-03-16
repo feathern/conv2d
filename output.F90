@@ -2,7 +2,7 @@ module output
 use grid
 use fields
 implicit none
-integer :: density_unit=20, x_unit=21, output_interval 
+integer :: density_unit=20, x_unit=21, output_interval = 1000
 
  character*120 :: xfile = "xgrid", rhofile = "density"
 

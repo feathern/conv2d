@@ -3,8 +3,8 @@ Module initialization
     use grid
     use fields
     implicit none
-    integer :: density_init_type
-    integer :: wave_num
+    integer :: density_init_type = 2
+    real*8 :: wave_num
     real*8 :: vxamp = 1.0d0
 contains
     subroutine initialize_velocity()

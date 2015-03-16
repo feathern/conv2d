@@ -4,9 +4,9 @@ Module evolve
     use grid
     use derivatives
 implicit none
-real*8 :: dt, elapsed_time, max_time
+real*8 :: dt=0.001, elapsed_time, max_time = 1.0d1
 real*8, allocatable :: drhodt(:), temp(:)
-integer :: iteration, max_iteration
+integer :: iteration, max_iteration = 20000
 contains
     subroutine evolve_fields()
         logical :: keepgoing
@@ -14,8 +14,8 @@ contains
         iteration = 0
         keepgoing = .True.
         allocate(drhodt(1:nx),temp(1:nx))
-            drhodt = 0.0d0
-            temp = 0.0d0
+        drhodt = 0.0d0
+        temp = 0.0d0
         do while (keepgoing)
             call get_drhodt()
             call update_rho()
