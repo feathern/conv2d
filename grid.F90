@@ -1,13 +1,15 @@
 Module grid
 Implicit none
 
-integer :: nx
-Real*8, allocatable :: x(:)
-Real*8 :: xmin, xmax
+! Added y variables, 3/23/2015
+integer :: nx, ny 
+Real*8, allocatable :: x(:), y(:) 
+Real*8 :: xmin, xmax, ymin, ymax 
 contains 
     subroutine initialize_grid()
-        allocate(x(1:nx))
+        allocate(x(1:nx),y(1:ny))
         call gen_grid_periodic(xmin,xmax,x)
+        call gen_grid_periodic(ymin,ymax,y)
     end subroutine initialize_grid
 subroutine gen_grid_periodic(amin,amax,a)
     Real*8 :: amin, amax, a(:), da, na
