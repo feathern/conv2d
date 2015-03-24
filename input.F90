@@ -4,7 +4,7 @@ Module input
     use Initialization
     Use Evolve
 ! Added ny 3/23/15
-    Namelist /input_namelist/ dt,output_interval, density_init_type,max_time, max_iteration, nx, ny wave_num, &
+    Namelist /input_namelist/ dt,output_interval, density_init_type,max_time, max_iteration, nx, ny, wave_num, &
                 vxamp
 contains
     subroutine get_input()

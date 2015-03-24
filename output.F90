@@ -16,22 +16,36 @@ contains
     subroutine initialize_output()
         call openfile(x_unit,xfile)
         call openfile(density_unit,rhofile)
-        call write_array(x,x_unit)
+        call write_array1d(x,x_unit)
         call closefile(x_unit)
     end subroutine initialize_output
     subroutine write_msg(a)         
         real*8 :: a(:)        
         write(6,*) a
     end subroutine write_msg
-    subroutine write_array(array,funit)
+    subroutine write_array1d(array,funit)
         integer :: i, imin, imax, nrec, new_pos
         integer, intent(in) :: funit
         Real*8, intent(in) :: array(:)
         imin = LBOUND(array,1)
         imax = UBOUND(array,1)
         read(funit,pos=1)nrec
-        new_pos = 1 +nx*nrec*8+8
+        new_pos = 1 +nx*ny*nrec*8+8
         write(funit,pos = new_pos)(array(i),i=imin,imax)
+        nrec = nrec + 1
+        write(funit,pos=1) nrec
+    end subroutine write_array1d
+    subroutine write_array(array,funit)
+        integer :: i, imin, imax, nrec, new_pos, j, jmin, jmax
+        integer, intent(in) :: funit
+        Real*8, intent(in) :: array(:,:)
+        imin = LBOUND(array,1)
+        imax = UBOUND(array,1)
+        jmin = LBOUND(array,2)
+        jmax = UBOUND(array,2)
+        read(funit,pos=1)nrec
+        new_pos = 1 +nx*ny*nrec*8+8
+        write(funit,pos = new_pos)((array(i,j),i=imin,imax),j=jmin,jmax)
         nrec = nrec + 1
         write(funit,pos=1) nrec
     end subroutine write_array

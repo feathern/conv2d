@@ -17,17 +17,17 @@ contains
         call initialize_velocity()       
     end subroutine initialize_fields
     subroutine initialize_density()
-        integer :: i
-        allocate(density(1:nx,1:nx))        
+        integer :: i, j
+        allocate(density(1:nx,1:ny))        
         select case (density_init_type)
             case (1)
-            Do j = 1, nx    ! added a second dimension 3/23/15
+            Do j = 1, ny    ! added a second dimension 3/23/15
                 Do i = 1, nx
                     density(i,j) = sin(wave_num*x(i))
                 endDo
             endDo
             case (2)
-            Do j=1, nx      ! added a secpnd dimension 3/23/15
+            Do j=1, ny      ! added a secpnd dimension 3/23/15
                 Do i=1,nx
                     density(i,j) = exp(-(x(i)-3.14)**2)
                 endDo

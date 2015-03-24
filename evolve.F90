@@ -34,20 +34,20 @@ contains
         end do
     end subroutine evolve_fields
     subroutine update_rho()
-        integer :: i
-        do j = 1, nx
+        integer :: i, j
+        do j = 1, ny
             do i=1, nx ! looping over x
                 density(i,j) = density(i,j)+drhodt(i,j)*dt
             end do
         end do
     end subroutine update_rho
     subroutine get_drhodt()
-        integer :: i        
+        integer :: i, j        
         call d_by_dx(x,density,temp) ! temp = drho/dx
         call d_by_dx(x,temp,drhodt) ! drhodt = (drho/dx)^2
-        do j = 1, nx        ! made density, temp, and drhodt 2D: 3/23/15
+        do j = 1, ny        ! made density, temp, and drhodt 2D: 3/23/15
             do i=1, nx        
-                drhodt(i,j) = drhodt(i,j)-temp(i,j)*vx(i)  
+                drhodt(i,j) = drhodt(i,j)-temp(i,j)*vx(i,j)  
             end do  
         end do             
    end subroutine get_drhodt
