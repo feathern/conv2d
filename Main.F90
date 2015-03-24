@@ -4,6 +4,7 @@ Program Main
     Use input
     use fields
     implicit none
+    write(6,*)'Beginning Program.'
     call get_input()
     call initialize_grid()
     call initialize_fields()
