@@ -1,4 +1,4 @@
 
 
-gfortran -fbounds-check grid.F90 derivatives.F90 fields.F90 output.F90 evolve.F90 Initialization.F90 input.F90 Main.F90 -o conv
+gfortran -fbounds-check -O3 grid.F90 derivatives.F90 fields.F90 output.F90 evolve.F90 Initialization.F90 input.F90 Main.F90 -o conv
 

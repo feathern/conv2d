@@ -15,7 +15,7 @@ contains
     end subroutine finalize_output
     subroutine initialize_output()
         call openfile(x_unit,xfile)
-        call openfile(density_unit,rhofile)
+        call openfile(density_unit,rhofile,twod = .true.)
         call write_array1d(x,x_unit)
         call closefile(x_unit)
     end subroutine initialize_output
@@ -44,7 +44,7 @@ contains
         jmin = LBOUND(array,2)
         jmax = UBOUND(array,2)
         read(funit,pos=1)nrec
-        new_pos = 1 +nx*ny*nrec*8+8
+        new_pos = 1 +nx*ny*nrec*8+12
         write(funit,pos = new_pos)((array(i,j),i=imin,imax),j=jmin,jmax)
         nrec = nrec + 1
         write(funit,pos=1) nrec
@@ -53,14 +53,18 @@ contains
         integer, intent(in) :: funit
         close(funit)
     end subroutine closefile
-    subroutine openfile(funit,file_name)
+    subroutine openfile(funit,file_name,twod)
         character*120 :: file_name
         integer, intent(in) :: funit
         integer :: nrec = 0
+        logical, Intent(IN), Optional :: twod
         OPEN(UNIT=funit, FORM="unformatted", FILE=file_name,&
         & access="stream",status="replace" )
         write(funit) nrec
         write(funit) nx
+        if (present(twod)) Then
+            if (twod) write(funit) ny
+        endif
     end subroutine openfile
 
 end module output
