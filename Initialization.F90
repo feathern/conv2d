@@ -60,7 +60,7 @@ contains
                     density(i,j) = exp(-(x(i)-3.14)**2)
                 endDo
             endDo    
-            case(3)
+            case (3)
             x0 = pi
             y0 = pi
             Do j=1, ny
@@ -70,7 +70,21 @@ contains
                     r2 = xval**2+yval**2 
                     density(i,j) = exp(-alpha*r2)
                 end do
-            end do       
+            end do  
+            case (4)
+            Do j=1, ny
+                Do i=1, nx
+                    xval = x(i)-pi
+                    density(i,j) = exp(-alpha*xval**2)
+                end do
+            end do     
+            case (5)
+            Do j=1, ny
+                yval = y(j)-y0
+                Do i=1, nx
+                    density(i,j) = exp(-alpha*yval**2)
+                end do
+            end do
             case default
         end select
     end subroutine initialize_density
