@@ -1,0 +1,124 @@
+
+%\documentclass[12pt,preprint2]{aastex}
+\documentclass[12pt]{article}
+
+\usepackage{natbib}
+\usepackage{epsfig}
+\usepackage{amsmath}
+
+%\usepackage{floatrow}
+
+\textwidth=6.50in
+\hoffset = -0.625in
+\textheight=9.0in
+\voffset = -.75in
+
+%\textwidth=17.6cm
+%\hoffset = -0.508cm
+%\textheight=24cm
+%\voffset = -.24cm
+
+\newcommand{\rh}{\overline{\rho}}
+
+\newcommand{\rsun}{R_\odot}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\pd}{\partial}
+\newcommand{\del}{\mbox{\boldmath $\nabla$}}
+\newcommand{\dvH}{\mbox{\boldmath $\nabla_H ~\cdot ~$}}
+\newcommand{\dv}{\mbox{\boldmath $\nabla \cdot$}}
+\newcommand{\curl}{\mbox{\boldmath $\nabla \times$}}
+\newcommand{\lapperp}{\nabla_\bot^2}
+\newcommand{\delperp}{\mbox{\boldmath $\nabla$}_\bot}
+\newcommand{\cross}{\mbox{\boldmath $\times$}}
+\newcommand{\bdot}{\mbox{\boldmath $\cdot$}}
+
+\newcommand{\avort}{\mbox{\boldmath $\omega_a$}}
+\newcommand{\sintheta}{\mathrm{sin}\theta}
+\newcommand{\costheta}{\mathrm{cos}\theta}
+\newcommand{\sinthetasq}{\mathrm{sin}^2\theta}
+\newcommand{\dbydtheta}[1]{\frac{\partial #1}{\partial\theta}}
+\newcommand{\dby}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\Plm}{P_\ell^m}
+\newcommand{\Pml}[1]{P_{\ell #1}^m}
+\newcommand{\rPlm}{\tilde{P}_\ell^m}
+\newcommand{\rPml}[1]{\tilde{P}_{\ell #1}^m}
+\def\sol{\odot}
+\def\del{\nabla}
+\def\cross{\times}
+\def\avg{\bar}
+\def\vec{\boldsymbol}
+\def\scrD{\mathcal{D}}
+\def\scrR{\mathcal{R}}
+\def\scrF{\mathcal{F}}
+\newcommand{\vv}{{\bf v}}
+\newcommand{\Ab}{{\bf A}}
+\newcommand{\bb}{\mbox{\boldmath ${\bf B}$}}
+\newcommand{\oom}{{\bf \Omega}}
+\newcommand{\grav}{{\bf g}}
+\newcommand{\vort}{\mbox{\boldmath $\omega$}}
+\newcommand{\DD}{\mbox{\boldmath ${\cal D}$}}
+\newcommand{\uvr}{\mbox{\boldmath $\hat{r}$}}
+\newcommand{\uvz}{\mbox{\boldmath $\hat{z}$}}
+\newcommand{\uvx}{\mbox{\boldmath $\hat{x}$}}
+\newcommand{\uvt}{\mbox{\boldmath $\hat{\theta}$}}
+\newcommand{\uvp}{\mbox{\boldmath $\hat{\phi}$}}
+\newcommand{\uvk}{\mbox{\boldmath $\hat{k}$}}
+\newcommand{\uvi}{\mbox{\boldmath $\hat{i}$}}
+\newcommand{\uvj}{\mbox{\boldmath $\hat{j}$}}
+
+
+\newcommand{\rr}{\rho_0}
+\newcommand{\FF}{\mbox{\boldmath ${\cal F}$}}
+\newcommand{\ppp}{^\prime}
+\newcommand{\series}{series \textit{A} }
+\newcommand{\seriesns}{series \textit{A}}
+\newcommand{\mysqueeze}{\vspace{-0.1in}}
+\let\la=\lesssim            % For Springer A&A compliance...
+\let\ga=\gtrsim
+
+
+\begin{document}
+
+\thispagestyle{empty}
+\noindent
+{\bf Notes}
+
+
+
+\pagenumbering{arabic}
+
+\section{Advection Diffusion}
+In what follows, non-bolded symbols indicate scalar quantities, and bolded symbols indicate vectors such that
+\begin{equation}
+\vec{a}(x,y,z) = a_x(x,y,z) \uvi + a_y(x,y,z) \uvj + a_z(x,y,z) \uvk .
+\end{equation}
+
+Let $\rho(x,y,z)$ be the density of some quantity (such as mass, charge, x-momentum, etc.) as a function of position.  Then the rate of change of that quantity is given by
+\begin{equation}
+\frac{\partial\rho}{\partial t} = -\vec{\del}\cdot\vec{F} ,
+\end{equation}
+where $\vec{F}$ is the flux of that quantity.  As an example, suppose that $\rho$ is a mass density.  Then $F_x(x,y,z)$ describes the amount of mass passing across a surface parallel to the $x-y$ plane at position $(x,y,z)$, and has units of kg m$^-2$ s $^{-1}$.  Two types of flux we have discussed so far are the \textit{advective flux} and the \textit{diffusive flux}.  The advective flux (subscript a) describes the contribution of a flow to the flux of our material, charge, momentum etc., and is given by
+\begin{equation}
+\vec{F}_a = \rho \vec{v} .
+\end{equation}
+The diffusive flux describes how the concentration of our material is changing due to diffusive mixing.  This mixing should generally be thought of as arising from random molecular motions, and it has the effect of trying to smooth out any gradients in the density field.  Thus, if we had a region of high density adjacent to a region of low density, diffusion would mix these regions over time.  Eventually the density in those two regions would be the same.  A diffusive flux (subscript D) is expressed by
+\begin{equation}
+\vec{F}_D = -\sigma \vec{\del}\rho ,
+\end{equation}
+where $\sigma$ is referred to as a diffusion coefficient.  The functional form of $\sigma$ depends on the diffusion process under consideration, and it while it may depend on both spatial position, it is often assumed to be a constant.  For our studies, we will assume that $\sigma$ is constant.
+
+When transport is occuring due to both advection and diffusion, the flux $\vec{F}$ is given by
+\begin{equation}
+\vec{F} = \vec{F}_A + \vec{F}_D = \rho\vec{v}-\sigma\vec{\del}\rho .
+\end{equation}
+
+Combining equation 5 with equation 2, we see that
+\begin{equation}
+\frac{\partial\rho}{\partial t} = -\vec{\del}\cdot\left( \rho\vec{v}-\sigma\vec{\del}\rho \right)= -\vec{\del}\cdot(\rho\vec{v})+\sigma\vec{\del}^2\rho, 
+\end{equation}
+and arrive at the advection diffusion equation.  Let us assume 2-dimensionality.  Namely, assume that $\rho$ and $\vec{v}$ are functions of \textit{x} and \textit{y} only and that no vectors have a $\uvk$ component.  Equation 6 then reduces to
+\begin{equation}
+\frac{\partial\rho}{\partial t} = -\frac{\partial}{\partial x}(\rho v_x) -\frac{\partial}{\partial y}(\rho v_y)+\sigma\frac{\partial^2\rho}{\partial x^2} +\sigma\frac{\partial^2\rho}{\partial y^2}
+\end{equation}
+
+\end{document}

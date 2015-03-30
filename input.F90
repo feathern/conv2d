@@ -5,7 +5,7 @@ Module input
     Use Evolve
 ! Added ny 3/23/15
     Namelist /input_namelist/ dt,output_interval, density_init_type,max_time, max_iteration, nx, ny, sigma, wave_num, &
-                vxamp, vyamp, velocity_init_type, alpha
+                vxamp, vyamp, velocity_init_type, alpha, expx0
 contains
     subroutine get_input()
         character*120 :: input_file

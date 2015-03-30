@@ -4,7 +4,7 @@ Module initialization
     use fields
     implicit none
     integer :: density_init_type = 2, velocity_init_type = 0
-    real*8 :: wave_num, alpha = 1.0d0
+    real*8 :: wave_num, alpha = 1.0d0, expx0 = 3.14
     real*8 :: vxamp = 1.0d0, vyamp = 1.0d0
 contains
     subroutine initialize_velocity()
@@ -57,7 +57,7 @@ contains
             case (2)
             Do j=1, ny      ! added a secpnd dimension 3/23/15
                 Do i=1,nx
-                    density(i,j) = exp(-(x(i)-3.14)**2)
+                    density(i,j) = exp(-alpha*(x(i)-expx0)**2)
                 endDo
             endDo    
             case (3)

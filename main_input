@@ -1,15 +1,16 @@
 &input_namelist
 wave_num = 2.0d0
 output_interval = 500
-dt = .001
+dt = .0001
 density_init_type = 2
 max_time = 13.0
-max_iteration = 7000
+max_iteration = 100000
 nx = 128
 ny = 128
 sigma = 0.25
-vxamp = 1.0d0
-vyamp = 1.0d0
-velocity_init_type = 1
-alpha = 1.0d0
+vxamp = 3.0d0
+vyamp = 3.0d0
+velocity_init_type = 3
+alpha = 10.0d0
+expx0 = 1.0d0
 /
